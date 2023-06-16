@@ -39,7 +39,7 @@ load data local infile '/root/sql1.log' into table 'tb_user' fields terminated b
 
   ![sql优化1](images/sql优化1.png)
 
-  ![sql优化2](images\sql优化2.png)
+  ![sql优化2](images/sql优化2.png)
 
   Page为最小存储单位，其中的row存储的为字段值
 
@@ -146,7 +146,7 @@ select count(*) from tb_user;
   + count()为聚合函数，对于返回的结果集，一行行地判断，如果count函数的参数不是NULL，累计值就加1，否则不加，最后返回累计值
   
   + 用法：count(*)、count(主键)、count(字段)、count(1)
-    ![sql优化3](\images\sql优化8.png)
+    ![sql优化3](images/sql优化8.png)
   
   $\textcolor{red}{按照效率排序：count(字段)<count(主键 id)<count(1)约等于count(*)，尽量使用count(*)}$
   
