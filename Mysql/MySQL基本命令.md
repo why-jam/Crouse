@@ -229,48 +229,48 @@ char为定长，varchar为变长，当字符长度为1时，采用char存储会�
 		```mysql
   	SELECT 字段列表 FROM 表名 WHERE 条件列表;
   	```
-  	关系运算符：>,>=,<,<=,=,!=/<>，
-                BETWEEN ... AND ...,
-	              IN (...),
-	              LIKE 占位符(模糊匹配，_匹配的单个字符，%匹配任意字符),
-	              IS NULL 是空
-		逻辑运算符：AND / &&, OR /||, NOT /!
-		
-	- 聚合函数(count,max,min,avg,sum)
-		将一列数据当作一个整体，进行纵向计算
-		```mysql
-		SELECT 聚合函数(字段列表) FROM 表名;
-		```
-		$\textcolor{red}{null不参与聚合函数计算}$
-		
-	- 分组查询(group by)
-		```mysql
-		SELECT 字段列表 FROM 表名 [WHERE 条件] GROUP BY 分组字段名 [HAVING 分组后过滤条件];
-		```
-		where 和 having 区别
-		+ 执行时机不同：where是分组之前进行过滤，不满足where条件不参数分组；而having是分组之后对结果进行过滤
-		+ 判断条件不同：where不能对聚合函数进行判断，而having可以
-		执行顺序：where > 聚合函数 > having
-		分组之后，查询的字段一般为聚合函数和分组字段，查询其他字段无任何意义
-		
-	- 排序查询(order by)
-		```mysql
-		SELECT 字段列表 FROM 表名 ORDER BY 字段1 排序方式1,字段2 排序方式;
-		```
-		排序方式：ASC：升序（默认）		DESC：降序
-		！！如果是多字段排序，当第一个字段值相同时，才会按照第二个字段排序
-		
-	- 分页查询(limit)
-		```mysql
-		SELECT 字段列表 FROM 表名 LIMIT 起始索引，查询记录数;
-		```
-		+ 起始索引从0开始，起始索引=（查询页码-1）*每页显示记录数
-		
-		+ 分页查询时数据库的方言，不同数据库由不同的实现
-		
-		+ 如果查询的时第一页，起始索引可以省略，直接简写为limit 10。（10条记录数）
-		
-		  
++ 关系运算符：>,>=,<,<=,=,!=/<>，
+        BETWEEN ... AND ...,
+        IN (...),
+        LIKE 占位符(模糊匹配，_匹配的单个字符，%匹配任意字符),
+        IS NULL 是空
+        逻辑运算符：AND / &&, OR /||, NOT /!
+
+- 聚合函数(count,max,min,avg,sum)
+将一列数据当作一个整体，进行纵向计算
+    ```mysql
+    SELECT 聚合函数(字段列表) FROM 表名;
+    ```
+$\textcolor{red}{null不参与聚合函数计算}$
+
+- 分组查询(group by)
+    ```mysql
+    SELECT 字段列表 FROM 表名 [WHERE 条件] GROUP BY 分组字段名 [HAVING 分组后过滤条件];
+    ```
+    where 和 having 区别
++ 执行时机不同：where是分组之前进行过滤，不满足where条件不参数分组；而having是分组之后对结果进行过滤
++ 判断条件不同：where不能对聚合函数进行判断，而having可以
+执行顺序：where > 聚合函数 > having
+分组之后，查询的字段一般为聚合函数和分组字段，查询其他字段无任何意义
+
+- 排序查询(order by)
+    ```mysql
+    SELECT 字段列表 FROM 表名 ORDER BY 字段1 排序方式1,字段2 排序方式;
+    ```
+    排序方式：ASC：升序（默认）		DESC：降序
+    ！！如果是多字段排序，当第一个字段值相同时，才会按照第二个字段排序
+
+- 分页查询(limit)
+    ```mysql
+    SELECT 字段列表 FROM 表名 LIMIT 起始索引，查询记录数;
+    ```
+    + 起始索引从0开始，起始索引=（查询页码-1）*每页显示记录数
+
+    + 分页查询时数据库的方言，不同数据库由不同的实现
+
+    + 如果查询的时第一页，起始索引可以省略，直接简写为limit 10。（10条记录数）
+
+
 ### 查询总结
 ![DQL](images/DQL.png)
 
